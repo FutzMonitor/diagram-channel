@@ -1,4 +1,4 @@
 node_modules
 .env
 config.json
-.eslintrc.json
+discord-bot/.eslintrc.json
