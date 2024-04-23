@@ -1,5 +1,8 @@
-const { SlashCommandBuilder } = require('discord.js');
 
+/**
+ * Run this command by typing /server in the Discord message box. 
+ * @action Simply states the server name and the number of users in said server.
+ */const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('server')

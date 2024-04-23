@@ -1,5 +1,12 @@
 const { SlashCommandBuilder } = require('discord.js');
 
+/**
+ * Run this command by typing /calculate in the Discord message box. 
+ * @number1 The first integer argument.
+ * @operation The math operation to be performed.
+ * @number2 The second integer argument.
+ * @action Performs the specificed math operation on number1 and number2.
+ */
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('calculate')

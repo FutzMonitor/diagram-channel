@@ -4,7 +4,9 @@ dotenv.config();
 const fs = require('node:fs');
 const path = require('node:path');
 
-
+/**
+ * Deploys all commands found inside of the /commands directory.
+ */
 const commands = [];
 // Grab all the command folders from the command directory
 const foldersPath = path.join(__dirname, 'commands');

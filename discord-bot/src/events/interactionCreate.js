@@ -1,5 +1,8 @@
 const { Events } = require('discord.js');
 
+/**
+ * Handles interactions between the user and the bot application.
+ */
 module.exports = {
     name: Events.InteractionCreate,
     async execute(interaction) {
