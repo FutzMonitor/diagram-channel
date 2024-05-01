@@ -125,7 +125,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Christian - gonzalec@dickinson.edu
 
-Project Link: [https://github.com/FutzMonitor/IdleBot](https://github.com/FutzMonitor/IdleBot)
+Project Link: [https://github.com/FutzMonitor/diagram-channel](https://github.com/FutzMonitor/diagram-channel)
 
 <!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> --> 
 
