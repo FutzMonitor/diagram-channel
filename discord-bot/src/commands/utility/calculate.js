@@ -8,6 +8,7 @@ const { SlashCommandBuilder } = require('discord.js');
  * @action Performs the specificed math operation on number1 and number2.
  */
 module.exports = {
+    category: 'utility',
     data: new SlashCommandBuilder()
         .setName('calculate')
         .setDescription('Calculates some operation between two whole numbers.')
@@ -36,7 +37,6 @@ module.exports = {
         ),
 
     async execute(interaction) {
-        console.log(`Entering the execute function.`);
         const operation = interaction.options.getString('operation'); 
         const number1 = interaction.options.getInteger('number1');
         const number2 = interaction.options.getInteger('number2');

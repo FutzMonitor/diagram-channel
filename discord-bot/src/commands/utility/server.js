@@ -4,6 +4,7 @@
  * @action Simply states the server name and the number of users in said server.
  */const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
+    category: 'utility',
     data: new SlashCommandBuilder()
         .setName('server')
         .setDescription('Provides information about the server'),

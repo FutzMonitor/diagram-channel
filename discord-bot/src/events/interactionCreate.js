@@ -19,7 +19,7 @@ module.exports = {
             await command.execute(interaction);
         }
         catch (error) {
-            console.error(`[ERR] Something went wrong: ${error.message}`);
+            console.error(`[ERR]: Something went wrong: ${error.message}`);
             if(interaction.replied || interaction.deffered) {
                 await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
             }

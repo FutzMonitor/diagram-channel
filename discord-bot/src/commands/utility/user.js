@@ -4,7 +4,8 @@ const { SlashCommandBuilder } = require('discord.js');
  * Run this command by typing /user in the Discord message box. 
  * @action Simply prints who ran the command and when they last joined the server.
  */
-module.exports = {
+module.exports = { 
+    category: 'utility',
     data: new SlashCommandBuilder()
         .setName('user')
         .setDescription('Provides information about the user.'),
