@@ -5,6 +5,7 @@ const { SlashCommandBuilder } = require("discord.js");
  * @action Simply responds 'Pong!' to the users command.
  */
 module.exports = {
+    category: 'utility',
     data: new SlashCommandBuilder()
         .setName('ping')
         .setDescription('Replies with Pong!'),

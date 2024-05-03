@@ -10,7 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^14.14.1",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "mermaid": "^10.9.0",
+    "puppeteer": "^22.7.1",
+    "sharp": "^0.33.3"
   },
   "devDependencies": {
     "eslint": "^9.0.0"
