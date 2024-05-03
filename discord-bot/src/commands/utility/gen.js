@@ -38,7 +38,7 @@ module.exports = {
                 const svgCode = await generateDiagramSVG(graphDefinition);
 
                 // Reply to the user with the generated SVG
-                
+
                 modalInteraction.reply({ content: 'Here\'s your diagram:', files: [svgCode] });
             })
             .catch((err) => {
@@ -48,7 +48,7 @@ module.exports = {
 };
 
 async function generateDiagramSVG(graphDefinition) {
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
     await page.setContent(`
@@ -76,22 +76,42 @@ async function generateDiagramSVG(graphDefinition) {
         </html>
     `);
 
-    // Wait for the Mermaid script to be fully loaded and initialized
+    // Wait for the Mermaid diagram to render
     await page.waitForFunction(() => typeof mermaid !== 'undefined');
+    await page.waitForSelector('.mermaid svg');
+    const svgElement = await page.$('.mermaid svg');
+    const boundingBox = await svgElement.boundingBox();
+    const padding = 20; // Add 20 pixels of padding to finetune targeting the actual svg. You can change it as needed.
+    await page.setViewport({
+        width: Math.ceil(boundingBox.width) + padding,
+        height: Math.ceil(boundingBox.height),
+        deviceScaleFactor: 2 
+    });
 
-    // Once the Mermaid script is loaded, proceed with rendering the diagram
-    const svgCode = await page.evaluate(() => {
-        const svg = document.querySelector('.mermaid svg');
-        return svg ? svg.outerHTML : null;
+    // Take a screenshot of the rendered SVG
+    const svgBuffer = await page.screenshot({
+        clip: {
+            x: boundingBox.x,
+            y: boundingBox.y,
+            width: boundingBox.width + padding,
+            height: boundingBox.height
+        },
+        omitBackground: true
     });
 
     await browser.close();
 
-    return generateDiagramPNG(svgCode);
+    return generateDiagramPNG(svgBuffer);
 }
 
-async function generateDiagramPNG(svgCode) {
-    // Convert SVG code to PNG using sharp
-    const pngBuffer = await sharp(Buffer.from(svgCode)).png().toBuffer();
+async function generateDiagramPNG(svgBuffer) {
+    // Converts SVG to PNG via Sharp
+    const pngBuffer = await sharp(svgBuffer)
+        .png({
+            density: 300,
+            background: { r: 255, g: 255, b: 255, alpha: 1 }
+        })
+        .toBuffer();
+
     return pngBuffer;
 }
