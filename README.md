@@ -24,7 +24,7 @@
 This project serves as the <b>BSF</b> (Build-something-fun) aspect of my senior capestone project at Dickinson College. Discord is a large instant messaging and social playform [(wiki)](https://en.wikipedia.org/wiki/Discord). Many tech savy users build bot applications to automate essential and nonessential functionality for management of large servers, entertainment, or other peersonal reasons. As an avid Discord user, and with the relative support and size of MermaidJS, I would have thought that a bot application for MermaidJS would have already been built by someone by now. However, I could only find two bots: Yash-Singh1's [mermaidjs-discord](https://github.com/Yash-Singh1/mermaidjs-discord) and ttakami-42's [Mermaider](https://github.com/ttakami-42/Mermaider). Since both don't quite reach the desired functionality I seek, this project seeks to bridge that personal gap. 
 
 __Goals__:
-- [ ] Create a `generate.js` slash command that uses MermaidJS API to generate diagrams for the user.
+- [x] Create a `generate.js` slash command that uses MermaidJS API to generate diagrams for the user.
 
 - [ ] Host the bot someplace to have permanent presence on Discord (instead of solely being online when I run it locally). 
 
