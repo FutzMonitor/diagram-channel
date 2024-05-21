@@ -35,11 +35,11 @@ module.exports = {
                 const graphDefinition = modalInteraction.fields.getTextInputValue('Diagram Syntax Input');
 
                 // Generate the SVG using Puppeteer
-                const svgCode = await generateDiagramSVG(graphDefinition);
+                const diagramPng = await generateDiagramPNG(graphDefinition);
 
                 // Reply to the user with the generated SVG
 
-                modalInteraction.reply({ content: 'Here\'s your diagram:', files: [svgCode] });
+                modalInteraction.reply({ content: 'Here\'s your diagram:', files: [diagramPng] });
             })
             .catch((err) => {
                 console.error(`[ERR] Something went wrong: ${err}`);
@@ -47,7 +47,16 @@ module.exports = {
     }
 };
 
-async function generateDiagramSVG(graphDefinition) {
+/**
+ * Take the user inputted modal diagram definition and launch a headless
+ * browser to render the Mermaid diagram. Necessary because Mermaid.js
+ * requires the DOM to calculate where to place different elements of the 
+ * diagram. NOTE: The migration from JISON to Langium might mean this function will 
+ * need to be updated in the future. 
+ * @param graphDefinition 
+ * @returns 
+ */
+async function generateDiagramPNG(graphDefinition) {
     const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
     const page = await browser.newPage();
 
@@ -101,10 +110,15 @@ async function generateDiagramSVG(graphDefinition) {
 
     await browser.close();
 
-    return generateDiagramPNG(svgBuffer);
+    return svgToPng(svgBuffer);
 }
-
-async function generateDiagramPNG(svgBuffer) {
+/**
+ * Convert to a PNG from an SVG representation because Discord
+ * doesn't support SVG rendering on its platform for security reasons.
+ * @param svgBuffer 
+ * @returns 
+ */
+async function svgToPng(svgBuffer) {
     // Converts SVG to PNG via Sharp
     const pngBuffer = await sharp(svgBuffer)
         .png({
