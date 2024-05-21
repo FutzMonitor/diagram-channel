@@ -43,28 +43,39 @@ This project is built with the following technologies, languages, and frameworks
 <!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> --> 
 
 <!-- GETTING STARTED -->
-<!-- ## Getting Started
+## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+There are two options available for running this bot. You could either run it locally or you can run it as a docker container. 
 
-### Prerequisites
+### Local Installation
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+#### Prerequisites
+There are some JavaScript dependencies that need to be installed before running the bot.
+Running the following command should install all of the dependencies:
+```
+npm install
+```
 
-### Installation
+Make sure that the [Node.js](https://nodejs.org/en/download/package-manager) is installed and running the previously listed command in the `discord-bot` directory.
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+#### Running the bot
+Ensure that you're inside of the `src` directory. Run the following commands:
+```
+node deploy-commands.js
+node index.js
+```
+The first command will register all slash application commands inside of the `commands/utility` directory and the second command will run the bot. The bot should now be online!
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/FutzMonitor/diagram-channel
-   ``` -->
-
+### Docker Container
+Make sure you have Docker installed on your machine. Run the following command to build the docker image 
+```
+docker build . -t diagram-channel
+```
+And to run your bot simply run the image from Docker Hub or execute the command below
+```
+docker run diagram-channel
+```
+Your bot should now be running!
 <!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
