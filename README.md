@@ -2,7 +2,7 @@
 <br />
 <div align="center" class="top">
   <a href="https://github.com/FutzMonitor/diagram-channel">
-    <img src="discord-bot/imgs/diagram_channel.png" alt="Logo" width="200" height="200">
+    <img src="discord-bot/media/diagram_channel.png" alt="Logo" width="200" height="200">
   </a>
 
   <h3 align="center"><b>Diagram Channel</b></h3>
@@ -28,6 +28,13 @@ __Goals__:
 
 - [ ] Host the bot someplace to have permanent presence on Discord (instead of solely being online when I run it locally). 
 
+
+<details>
+  <summary><b>Demo</b></summary>
+  <video width="800" height="600" controls>
+  <source src="discord-bot/media/bot-demo.mp4" type="video/mp4">
+</video>
+</details>
 
 <!-- <p align="right">(<a href="#top">back to top</a>)</p> -->
 
